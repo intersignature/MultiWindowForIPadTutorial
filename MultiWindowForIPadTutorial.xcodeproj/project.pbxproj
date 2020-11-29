@@ -15,6 +15,9 @@
 		275AE9E62574110200EF3863 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275AE9E42574110200EF3863 /* LaunchScreen.storyboard */; };
 		27EB0146257412B7009CB5A5 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB0144257412B7009CB5A5 /* UserCollectionViewCell.swift */; };
 		27EB0147257412B7009CB5A5 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27EB0145257412B7009CB5A5 /* UserCollectionViewCell.xib */; };
+		27EB0150257419AF009CB5A5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB014E257419AF009CB5A5 /* DetailViewController.swift */; };
+		27EB0151257419AF009CB5A5 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27EB014F257419AF009CB5A5 /* DetailViewController.xib */; };
+		27EB015525741A78009CB5A5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB015425741A78009CB5A5 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		275AE9E72574110200EF3863 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27EB0144257412B7009CB5A5 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		27EB0145257412B7009CB5A5 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		27EB014E257419AF009CB5A5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		27EB014F257419AF009CB5A5 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		27EB015425741A78009CB5A5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 				275AE9D9257410FF00EF3863 /* AppDelegate.swift */,
 				275AE9DB257410FF00EF3863 /* SceneDelegate.swift */,
 				275AE9DD257410FF00EF3863 /* ViewController.swift */,
+				27EB015325741A6C009CB5A5 /* Model */,
+				27EB014B25741975009CB5A5 /* ViewController */,
 				27EB014325741262009CB5A5 /* CollectionViewCell */,
 				275AE9DF257410FF00EF3863 /* Main.storyboard */,
 				275AE9E22574110200EF3863 /* Assets.xcassets */,
@@ -79,6 +87,31 @@
 				27EB0145257412B7009CB5A5 /* UserCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		27EB014B25741975009CB5A5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27EB014C25741981009CB5A5 /* Detail */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		27EB014C25741981009CB5A5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				27EB014E257419AF009CB5A5 /* DetailViewController.swift */,
+				27EB014F257419AF009CB5A5 /* DetailViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		27EB015325741A6C009CB5A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27EB015425741A78009CB5A5 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +174,7 @@
 			files = (
 				275AE9E62574110200EF3863 /* LaunchScreen.storyboard in Resources */,
 				27EB0147257412B7009CB5A5 /* UserCollectionViewCell.xib in Resources */,
+				27EB0151257419AF009CB5A5 /* DetailViewController.xib in Resources */,
 				275AE9E32574110200EF3863 /* Assets.xcassets in Resources */,
 				275AE9E1257410FF00EF3863 /* Main.storyboard in Resources */,
 			);
@@ -155,6 +189,8 @@
 			files = (
 				275AE9DE257410FF00EF3863 /* ViewController.swift in Sources */,
 				27EB0146257412B7009CB5A5 /* UserCollectionViewCell.swift in Sources */,
+				27EB015525741A78009CB5A5 /* User.swift in Sources */,
+				27EB0150257419AF009CB5A5 /* DetailViewController.swift in Sources */,
 				275AE9DA257410FF00EF3863 /* AppDelegate.swift in Sources */,
 				275AE9DC257410FF00EF3863 /* SceneDelegate.swift in Sources */,
 			);
