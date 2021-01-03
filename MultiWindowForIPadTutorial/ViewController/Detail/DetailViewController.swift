@@ -23,4 +23,19 @@ class DetailViewController: UIViewController {
 
         nameLabel.text = user.name
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if #available(iOS 13.0, *) {
+            view.window?.windowScene?.userActivity = user?.activity
+        }
+    }
+
+       override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if #available(iOS 13.0, *) {
+            view.window?.windowScene?.userActivity = nil
+        }
+    }
+
 }

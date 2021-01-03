@@ -12,13 +12,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+
+        if let userActivity = connectionOptions.userActivities.first ?? session.stateRestorationActivity {
+            if !configure(window: window, with: userActivity) {
+                Swift.debugPrint("Failed to restore from \(userActivity)")
+            }
+        }
     }
+
+    func configure(window: UIWindow?, with activity: NSUserActivity) -> Bool {
+
+        var configured: Bool = false
+
+        if activity.title == User.path {
+            guard let name = activity.userInfo?[User.nameKey] as? String else { return false }
+            guard let nav = (window?.rootViewController as? UINavigationController) else { return false }
+
+            let user = User(name: name)
+
+            let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
+            detailVC.user = user
+
+            nav.pushViewController(detailVC, animated: true)
+
+            configured = true
+        }
+
+        return configured
+    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
