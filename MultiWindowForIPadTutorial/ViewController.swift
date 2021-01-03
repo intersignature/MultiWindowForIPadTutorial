@@ -12,10 +12,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var users = Array.init(repeating: User(name: "name"), count: 10)
+    private var users: [User]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        users = prepareData()
 
         title = "UserList"
 
@@ -23,13 +25,22 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+
+    private func prepareData() -> [User] {
+
+        var users: [User] = []
+
+        for i in 1...10 {
+            users.append(.init(name: "name of \(i)"))
+        }
+
+        return users
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        users[indexPath.row].name = "name at \(indexPath.row)"
 
         let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
 
@@ -54,9 +65,10 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let model = users[indexPath.row]
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCollectionViewCell", for: indexPath) as! UserCollectionViewCell
 
-        cell.nameLabel.text = "\(model.name) at \(indexPath.row)"
+        cell.nameLabel.text = model.name
 
         return cell
     }
