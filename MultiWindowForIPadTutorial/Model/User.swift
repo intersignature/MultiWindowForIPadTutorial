@@ -13,8 +13,10 @@ struct User {
 
     var name: String
 
+    // NSUserActivity detail key
     static let activityType: String = "User"
     static let path: String = "UserDetail"
+    // model key
     static let nameKey: String = "Name"
 
     var activity: NSUserActivity {
