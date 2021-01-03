@@ -19,31 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
 
         if let userActivity = connectionOptions.userActivities.first ?? session.stateRestorationActivity {
-            if !configure(window: window, with: userActivity) {
-                Swift.debugPrint("Failed to restore from \(userActivity)")
-            }
+            configure(window: window, with: userActivity)
         }
     }
 
-    func configure(window: UIWindow?, with activity: NSUserActivity) -> Bool {
-
-        var configured: Bool = false
+    private func configure(window: UIWindow?, with activity: NSUserActivity) {
 
         if activity.title == User.path {
-            guard let name = activity.userInfo?[User.nameKey] as? String else { return false }
-            guard let nav = (window?.rootViewController as? UINavigationController) else { return false }
+            guard let name = activity.userInfo?[User.nameKey] as? String else { return }
+            guard let nav = (window?.rootViewController as? UINavigationController) else { return }
 
             let user = User(name: name)
 
             let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
             detailVC.user = user
+            detailVC.setupForMultipleWindow()
 
             nav.pushViewController(detailVC, animated: true)
-
-            configured = true
         }
-
-        return configured
     }
 
 

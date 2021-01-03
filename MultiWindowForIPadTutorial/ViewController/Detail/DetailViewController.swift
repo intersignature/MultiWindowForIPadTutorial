@@ -26,16 +26,27 @@ class DetailViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if #available(iOS 13.0, *) {
-            view.window?.windowScene?.userActivity = user?.activity
-        }
+
+        view.window?.windowScene?.userActivity = user?.activity
     }
 
        override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if #available(iOS 13.0, *) {
-            view.window?.windowScene?.userActivity = nil
-        }
+
+        view.window?.windowScene?.userActivity = nil
     }
 
+    func setupForMultipleWindow() {
+
+        let leftBackButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(removeFromScene))
+        navigationItem.leftBarButtonItem = leftBackButton
+    }
+
+    @objc private func removeFromScene() {
+
+        guard let session = view.window?.windowScene?.session else { return }
+        let option = UIWindowSceneDestructionRequestOptions()
+
+        UIApplication.shared.requestSceneSessionDestruction(session, options: option)
+    }
 }
