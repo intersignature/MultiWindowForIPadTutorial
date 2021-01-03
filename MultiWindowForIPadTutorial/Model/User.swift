@@ -7,8 +7,22 @@
 //
 
 import Foundation
+import MobileCoreServices
 
 struct User {
 
     var name: String
+
+    static let activityType: String = "User"
+    static let path: String = "UserDetail"
+    static let nameKey: String = "Name"
+
+    var activity: NSUserActivity {
+        let userActivity: NSUserActivity = NSUserActivity(activityType: User.activityType)
+        userActivity.title = User.path
+        userActivity.userInfo = [
+            User.nameKey: name
+        ]
+        return userActivity
+    }
 }

@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         collectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "UserCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.dragDelegate = self
     }
 
     private func prepareData() -> [User] {
@@ -71,5 +72,26 @@ extension ViewController: UICollectionViewDataSource {
         cell.nameLabel.text = model.name
 
         return cell
+    }
+}
+
+extension ViewController: UICollectionViewDragDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+
+        var dragItems: [UIDragItem] = []
+
+        let user = users[indexPath.row]
+        let userActivity = user.activity
+
+        let itemProvider = NSItemProvider(object: user.name as NSString)
+        itemProvider.registerObject(userActivity, visibility: .all)
+
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = user
+
+        dragItems.append(dragItem)
+
+        return dragItems
     }
 }
